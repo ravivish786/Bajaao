@@ -1,0 +1,47 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.mainFxmlClass {
+-fx-background-color: #57606f;
+    
+}
+.navbtn{
+    -fx-fill:white;
+    -fx-cursor:hand;
+}
+.navbtn:hover{
+    -fx-fill:blue;
+}
+.record{
+    -fx-fill:red;
+    -fx-cursor:hand;
+}
+.record:hover{
+    -fx-fill:blue;
+}
+.eqbtn{
+    -fx-background-color: transparent;
+    -fx-border-radius: 10px;
+     -fx-fill: white;
+     -fx-cursor: hand;
+}
+.eqbtn:hover{
+    -fx-background-color: blue;
+    -fx-fill: white;
+}
+.navbtnRed{
+     -fx-fill:red;
+    -fx-cursor:hand;
+}
+.navbtnRed:hover{
+    -fx-fill:blue;
+}
+.navbtnWhite{
+     -fx-fill:white;
+    -fx-cursor:hand;
+}
+.navbtnWhite:hover{
+    -fx-fill:blue;
+}
+

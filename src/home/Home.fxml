@@ -1,0 +1,641 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXToggleButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Bloom?>
+<?import javafx.scene.effect.Light.Distant?>
+<?import javafx.scene.effect.Lighting?>
+<?import javafx.scene.effect.Shadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.media.MediaView?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" onKeyReleased="#comepage" prefHeight="562.0" prefWidth="771.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="home.HomeController">
+    <stylesheets>
+        <URL value="@home.css" />
+    </stylesheets>
+    <children>
+        <BorderPane layoutX="176.0" layoutY="107.0" onMouseDragged="#draged" onMouseMoved="#moved" onMousePressed="#pressed" prefHeight="200.0" prefWidth="200.0" stylesheets="@home.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <top>
+                <HBox fx:id="home_top" alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="695.0" style="-fx-background-color: blue;" stylesheets="@home.css" BorderPane.alignment="CENTER">
+                    <children>
+                        <HBox alignment="CENTER_LEFT" opacity="0.7" prefHeight="30.0" prefWidth="1250.0">
+                            <children>
+                                <ImageView fitHeight="30.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../image/images%20(1).jpg" />
+                           </image>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin></ImageView>
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Bajaao" textAlignment="CENTER">
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Text>
+                                <Label fx:id="songname" alignment="CENTER" text="Song Name" textFill="WHITE">
+                                    <font>
+                                        <Font size="13.0" />
+                                    </font>
+                                    <HBox.margin>
+                                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                    </HBox.margin>
+                                    <padding>
+                                        <Insets left="10.0" />
+                                    </padding>
+                                </Label>
+                            </children>
+                            <opaqueInsets>
+                                <Insets left="20.0" />
+                            </opaqueInsets>
+                        </HBox>
+                        <FontAwesomeIconView fx:id="minbtn" fill="WHITE" glyphName="MINUS" onMouseClicked="#minpage" size="1.3em" style="-fx-cursor: hand;" textAlignment="CENTER">
+                            <HBox.margin>
+                                <Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
+                            </HBox.margin>
+                        </FontAwesomeIconView>
+                        <FontAwesomeIconView fx:id="maxbtn" fill="#0af558" glyphName="CIRCLE" onMouseClicked="#maxpage" size="1.3em" style="-fx-cursor: hand;" textAlignment="CENTER">
+                            <HBox.margin>
+                                <Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
+                            </HBox.margin>
+                        </FontAwesomeIconView>
+                        <FontAwesomeIconView fx:id="closebtn" fill="#eb2709" glyphName="CLOSE" onMouseClicked="#closepage" size="1.3em" style="-fx-cursor: hand;" textAlignment="CENTER">
+                            <HBox.margin>
+                                <Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
+                            </HBox.margin>
+                        </FontAwesomeIconView>
+                    </children>
+                </HBox>
+            </top>
+            <left>
+                <VBox fx:id="home_left" prefHeight="444.0" prefWidth="49.0" style="-fx-background-color: black;" stylesheets="@home.css" BorderPane.alignment="CENTER">
+                    <children>
+                  <FontAwesomeIconView fx:id="home" fill="WHITE" glyphName="HOME" onMouseClicked="#showHome" onMouseEntered="#homeMouseEnter" onMouseExited="#homeMouseExit" size="35" styleClass="navbtn" textAlignment="JUSTIFY" textOrigin="CENTER">
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </FontAwesomeIconView>
+                        <FontAwesomeIconView fx:id="setting" fill="WHITE" glyphName="GEAR" onMouseClicked="#showSetting" onMouseEntered="#settingMouseEnter" onMouseExited="#settingMouseExit" size="35" styleClass="navbtn" textAlignment="JUSTIFY" textOrigin="CENTER">
+                            <VBox.margin>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                            </VBox.margin>
+                        </FontAwesomeIconView>
+                        <FontAwesomeIconView fx:id="open" fill="WHITE" glyphName="FILE" onMouseClicked="#selectFileList" onMouseEntered="#openMouseEnter" onMouseExited="#openMouseExit" size="30" styleClass="navbtn" textAlignment="JUSTIFY" textOrigin="CENTER">
+                            <VBox.margin>
+                                <Insets bottom="14.0" left="14.0" right="14.0" top="14.0" />
+                            </VBox.margin>
+                        </FontAwesomeIconView>
+                        <FontAwesomeIconView fx:id="computer" fill="WHITE" glyphName="DESKTOP" onMouseClicked="#myComputer" onMouseEntered="#computerMouseEnter" onMouseExited="#computerMouseExit" size="30" styleClass="navbtn" textAlignment="JUSTIFY" textOrigin="CENTER">
+                            <VBox.margin>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                            </VBox.margin>
+                        </FontAwesomeIconView>
+                        <FontAwesomeIconView fx:id="tv" disable="true" fill="WHITE" glyphName="TV" onMouseClicked="#seeVideo" onMouseEntered="#tvMouseEnter" onMouseExited="#tvMouseExit" size="30" styleClass="navbtn" textAlignment="JUSTIFY" textOrigin="CENTER">
+                            <VBox.margin>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                            </VBox.margin>
+                        </FontAwesomeIconView>
+                  <FontAwesomeIconView fx:id="searchbtn" fill="WHITE" glyphName="SEARCH" onMouseClicked="#showSearchBar" onMouseEntered="#searchMouseEnter" onMouseExited="#searchMouseExit" size="35" styleClass="navbtn" textAlignment="JUSTIFY" textOrigin="CENTER">
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </FontAwesomeIconView>
+                  <FontAwesomeIconView fx:id="folder" glyphName="FOLDER_OPEN" onMouseClicked="#showFolder" onMouseEntered="#folderMouseEnter" onMouseExited="#folderMouseExit" size="35" styleClass="navbtn">
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </FontAwesomeIconView>
+                  <Text fill="WHITE" stroke="WHITE" strokeWidth="0.0" text="V 1.0">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </Text>
+                    </children>
+                </VBox>
+            </left>
+            <bottom>
+                <AnchorPane fx:id="controlArea" disable="true" prefHeight="79.0" prefWidth="771.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER">
+                    <children>
+                        <HBox alignment="CENTER" prefHeight="25.0" prefWidth="100.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <children>
+                                <Label fx:id="strttime" alignment="CENTER" contentDisplay="CENTER" text="00:00:00" textAlignment="CENTER" textFill="#f2ecec" />
+                            </children>
+                        </HBox>
+                        <HBox alignment="CENTER" layoutX="100.0" layoutY="2.0" prefHeight="25.0" prefWidth="578.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="0.0">
+                            <children>
+                                <Slider fx:id="process" nodeOrientation="LEFT_TO_RIGHT" prefHeight="22.0" prefWidth="1100.0" style="-fx-cursor: hand; -fx-background-color: transparent;">
+                                    <HBox.margin>
+                                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                    </HBox.margin>
+                           <effect>
+                              <Lighting diffuseConstant="2.0" specularConstant="0.77" specularExponent="0.0" surfaceScale="0.0">
+                                 <bumpInput>
+                                    <Shadow />
+                                 </bumpInput>
+                                 <light>
+                                    <Light.Distant color="#1d05f5" />
+                                 </light>
+                              </Lighting>
+                           </effect>
+                                </Slider>
+                            </children>
+                    
+                            <effect>
+                                <Bloom />
+                            </effect>
+                        </HBox>
+                        <HBox alignment="CENTER" layoutX="671.0" layoutY="2.0" prefHeight="25.0" prefWidth="100.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <children>
+                                <Label fx:id="endtime" text="00:00:00" textFill="WHITE" />
+                            </children>
+                        </HBox>
+                        <HBox alignment="CENTER" layoutX="99.0" layoutY="25.0" prefHeight="35.0" prefWidth="441.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="125.0" AnchorPane.topAnchor="25.0">
+                            <children>
+                                <FontAwesomeIconView fx:id="stop" fill="WHITE" glyphName="STOP" onMouseClicked="#stopSong" size="20" styleClass="navbtn">
+                                    <HBox.margin>
+                                        <Insets bottom="5.0" left="20.0" right="20.0" top="5.0" />
+                                    </HBox.margin>
+                                </FontAwesomeIconView>
+                                <FontAwesomeIconView fx:id="repeat" fill="WHITE" glyphName="REPEAT" onMouseClicked="#repeatSong" size="20" styleClass="navbtn">
+                                    <HBox.margin>
+                                        <Insets bottom="5.0" left="20.0" right="20.0" top="5.0" />
+                                    </HBox.margin>
+                                </FontAwesomeIconView>
+                                <FontAwesomeIconView fx:id="previous" fill="WHITE" glyphName="ANGLE_DOUBLE_LEFT" onMouseClicked="#previousSong" size="24" styleClass="navbtn">
+                                    <HBox.margin>
+                                        <Insets bottom="5.0" left="20.0" right="20.0" top="5.0" />
+                                    </HBox.margin>
+                                </FontAwesomeIconView>
+                                <FontAwesomeIconView fx:id="jumpleft" fill="WHITE" glyphName="ANGLE_LEFT" onMouseClicked="#jumpLeft" size="24" styleClass="navbtn">
+                                    <HBox.margin>
+                                        <Insets bottom="5.0" left="20.0" right="20.0" top="5.0" />
+                                    </HBox.margin>
+                                </FontAwesomeIconView>
+                                <FontAwesomeIconView fx:id="plyandpause" fill="WHITE" glyphName="PLAY" onMouseClicked="#playAndPause" size="24" styleClass="navbtn">
+                                    <HBox.margin>
+                                        <Insets bottom="5.0" left="20.0" right="20.0" top="5.0" />
+                                    </HBox.margin>
+                                </FontAwesomeIconView>
+                                <FontAwesomeIconView fx:id="jumpright" fill="WHITE" glyphName="ANGLE_RIGHT" onMouseClicked="#jumpRight" size="24" styleClass="navbtn">
+                                    <HBox.margin>
+                                        <Insets bottom="5.0" left="20.0" right="20.0" top="5.0" />
+                                    </HBox.margin>
+                                </FontAwesomeIconView>
+                                <FontAwesomeIconView fx:id="next" fill="WHITE" glyphName="ANGLE_DOUBLE_RIGHT" onMouseClicked="#nextSong" size="20" styleClass="navbtn">
+                                    <HBox.margin>
+                                        <Insets bottom="5.0" left="20.0" right="20.0" top="5.0" />
+                                    </HBox.margin>
+                                </FontAwesomeIconView>
+                                <FontAwesomeIconView fx:id="random" fill="WHITE" glyphName="RANDOM" onMouseClicked="#randomSong" size="20" styleClass="navbtn">
+                                    <HBox.margin>
+                                        <Insets bottom="5.0" left="20.0" right="20.0" top="5.0" />
+                                    </HBox.margin>
+                                </FontAwesomeIconView>
+                        <FontAwesomeIconView fx:id="curent" glyphName="USER" onMouseClicked="#currentSong" size="20" styleClass="navbtn">
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="20.0" right="20.0" top="5.0" />
+                           </HBox.margin>
+                        </FontAwesomeIconView>
+                            </children>
+                        </HBox>
+                        <HBox layoutX="681.0" layoutY="16.0" prefHeight="25.0" prefWidth="125.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
+                            <children>
+                                <FontAwesomeIconView fx:id="volumbtn" glyphName="VOLUME_UP" onMouseClicked="#volumControl" size="20" style="-fx-cursor: hand;" styleClass="navbtn">
+                                    <HBox.margin>
+                                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                    </HBox.margin>
+                                </FontAwesomeIconView>
+                                <Slider fx:id="volume" blockIncrement="2.0" majorTickUnit="2.0" max="20.0" prefHeight="22.0" prefWidth="90.0" style="-fx-cursor: hand;" value="2.0">
+                                    <HBox.margin>
+                                        <Insets bottom="2.0" left="2.0" right="2.0" top="5.0" />
+                                    </HBox.margin>
+                           <effect>
+                              <Lighting diffuseConstant="2.0" specularConstant="0.0" specularExponent="40.0" surfaceScale="0.0">
+                                 <bumpInput>
+                                    <Shadow />
+                                 </bumpInput>
+                                 <light>
+                                    <Light.Distant color="#8cf9ff" />
+                                 </light>
+                              </Lighting>
+                           </effect>
+                                </Slider>
+                            </children>
+                        </HBox>
+                        <HBox layoutX="10.0" layoutY="13.0" prefHeight="25.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="26.0">
+                            <children>
+                                <FontAwesomeIconView fx:id="snapshot" fill="WHITE" glyphName="CAMERA" onMouseClicked="#takeSnapshot" size="22" styleClass="navbtn">
+                                    <HBox.margin>
+                                        <Insets bottom="5.0" left="15.0" right="15.0" top="5.0" />
+                                    </HBox.margin>
+                                </FontAwesomeIconView>
+                                <FontAwesomeIconView fx:id="zoomInOut" fill="WHITE" glyphName="EXPAND" onMouseClicked="#zoomInOutVideo" size="22" styleClass="navbtn">
+                                    <HBox.margin>
+                                        <Insets bottom="5.0" left="15.0" right="15.0" top="5.0" />
+                                    </HBox.margin>
+                                </FontAwesomeIconView>
+                                <FontAwesomeIconView fx:id="btnplaybackspeed" fill="WHITE" glyphName="SLIDERS" onMouseClicked="#showPlayBackSpeed" size="22" styleClass="navbtn">
+                                    <HBox.margin>
+                                        <Insets bottom="5.0" left="20.0" right="20.0" top="5.0" />
+                                    </HBox.margin>
+                                </FontAwesomeIconView>
+                        <FontAwesomeIconView fx:id="equliger" fill="WHITE" glyphName="SLIDERS" onMouseClicked="#showEquiligerBar" rotate="90.0" size="22" styleClass="navbtn">
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="20.0" right="20.0" top="5.0" />
+                           </HBox.margin>
+                        </FontAwesomeIconView>
+                            </children>
+                        </HBox>
+                    </children>
+                </AnchorPane>
+            </bottom>
+            <center>
+                <AnchorPane fx:id="home_center" BorderPane.alignment="CENTER">
+                    <children>
+                        <HBox fx:id="searchbar" alignment="CENTER" prefHeight="35.0" prefWidth="716.0" style="-fx-background-color: black;" stylesheets="@home.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <TextField fx:id="searchsong" prefHeight="29.0" prefWidth="762.0" promptText="Search Song in list ..." style="-fx-background-color: white;">
+                           <padding>
+                              <Insets left="10.0" right="10.0" />
+                           </padding>
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin></TextField>
+                        <FontAwesomeIconView fx:id="seachbarClose" fill="#eb2709" glyphName="CLOSE" onMouseClicked="#closeSearchBox" size="20" style="-fx-cursor: hand;" textAlignment="CENTER">
+                           <HBox.margin>
+                              <Insets bottom="7.0" left="7.0" right="20.0" top="7.0" />
+                           </HBox.margin>
+                        </FontAwesomeIconView>
+                     </children>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding></HBox>
+                  <Pane fx:id="playbackpane" layoutX="65.0" prefHeight="98.0" prefWidth="420.0" style="-fx-background-color: black; -fx-border-color: blue;" AnchorPane.bottomAnchor="0.0">
+                     <children>
+                        <Slider fx:id="playbakcspeed" blockIncrement="0.25" layoutX="14.0" layoutY="49.0" majorTickUnit="0.25" max="2.0" min="0.25" minorTickCount="0" prefHeight="22.0" prefWidth="393.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" style="-fx-cursor: hand;" value="1.0">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <effect>
+                              <Lighting>
+                                 <bumpInput>
+                                    <Shadow blurType="GAUSSIAN" />
+                                 </bumpInput>
+                                 <light>
+                                    <Light.Distant color="#56f9ff" />
+                                 </light>
+                              </Lighting>
+                           </effect>
+                        </Slider>
+                        <HBox alignment="CENTER_LEFT" prefHeight="35.0" prefWidth="420.0" style="-fx-background-color: blue;">
+                           <children>
+                              <Label alignment="CENTER" text="Playback Speed" textFill="WHITE">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets left="20.0" right="10.0" />
+                                 </padding>
+                                 <HBox.margin>
+                                    <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <Label fx:id="playbackspeedvalue" alignment="CENTER" text="1.0" textFill="WHITE">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets left="100.0" right="100.0" />
+                                 </padding>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </children>
+                  </Pane>
+                  <Pane fx:id="equeligerbar" layoutX="124.0" prefHeight="285.0" prefWidth="475.0" style="-fx-background-color: black; -fx-border-color: blue;" AnchorPane.bottomAnchor="0.0">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="38.0" prefWidth="350.0" style="-fx-background-color: blue;">
+                           <children>
+                              <Label text="Equalizer" textFill="WHITE">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets left="10.0" />
+                                 </padding>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox fx:id="equalizerbar" alignment="CENTER" layoutX="350.0" prefHeight="40.0" prefWidth="125.0" style="-fx-background-color: black; -fx-border-color: blue; -fx-border-width: 1 1 0 0;" stylesheets="@home.css">
+                           <children>
+                              <JFXToggleButton fx:id="equalizerbtn" onMouseClicked="#showEqualigerPane" prefHeight="35.0" size="8.0" text="Off" textFill="#0509ff" toggleColor="#1e05ff" toggleLineColor="#164feb" unToggleColor="#ff0101" unToggleLineColor="#f20404">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </JFXToggleButton>
+                           </children>
+                        </HBox>
+                        <Pane fx:id="equalizerpane" disable="true" layoutY="45.0" prefHeight="240.0" prefWidth="475.0">
+                           <children>
+                              <HBox alignment="CENTER" layoutY="8.0" prefHeight="35.0" prefWidth="475.0">
+                                 <children>
+                                    <JFXButton fx:id="custom" style="-fx-border-color: white;" styleClass="eqbtn" stylesheets="@home.css" text="Custom" textFill="WHITE">
+                                       <HBox.margin>
+                                          <Insets bottom="5.0" left="5.0" right="15.0" top="5.0" />
+                                       </HBox.margin>
+                                    </JFXButton>
+                                    <JFXButton fx:id="normal" style="-fx-border-color: white; -fx-background-color: blue;" styleClass="eqbtn" stylesheets="@home.css" text="Normal" textFill="WHITE">
+                                       <HBox.margin>
+                                          <Insets bottom="5.0" left="5.0" right="15.0" top="5.0" />
+                                       </HBox.margin>
+                                    </JFXButton>
+                                    <JFXButton fx:id="classical" style="-fx-border-color: white;" styleClass="eqbtn" stylesheets="@home.css" text="Classical" textFill="WHITE">
+                                       <HBox.margin>
+                                          <Insets bottom="5.0" left="5.0" right="15.0" top="5.0" />
+                                       </HBox.margin>
+                                    </JFXButton>
+                                    <JFXButton fx:id="dance" style="-fx-border-color: white;" styleClass="eqbtn" stylesheets="@home.css" text="Dance" textFill="WHITE">
+                                       <HBox.margin>
+                                          <Insets bottom="5.0" left="5.0" right="15.0" top="5.0" />
+                                       </HBox.margin>
+                                    </JFXButton>
+                                    <JFXButton fx:id="flat" style="-fx-border-color: white;" styleClass="eqbtn" stylesheets="@home.css" text="Flat" textFill="WHITE">
+                                       <HBox.margin>
+                                          <Insets bottom="5.0" left="5.0" right="15.0" top="5.0" />
+                                       </HBox.margin>
+                                    </JFXButton>
+                                    <JFXButton fx:id="folk" style="-fx-border-color: white;" styleClass="eqbtn" stylesheets="@home.css" text="Folk" textFill="WHITE">
+                                       <HBox.margin>
+                                          <Insets bottom="5.0" left="5.0" right="15.0" top="5.0" />
+                                       </HBox.margin>
+                                    </JFXButton>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" layoutY="204.0" prefHeight="36.0" prefWidth="475.0">
+                                 <children>
+                                    <Label alignment="CENTER" text="60Hz" textFill="WHITE">
+                                       <padding>
+                                          <Insets left="25.0" right="25.0" />
+                                       </padding>
+                                    </Label>
+                                    <Label alignment="CENTER" text="230Hz" textFill="WHITE">
+                                       <padding>
+                                          <Insets left="25.0" right="25.0" />
+                                       </padding>
+                                    </Label>
+                                    <Label alignment="CENTER" text="910Hz" textFill="WHITE">
+                                       <padding>
+                                          <Insets left="25.0" right="25.0" />
+                                       </padding>
+                                    </Label>
+                                    <Label alignment="CENTER" text="3600Hz" textFill="WHITE">
+                                       <padding>
+                                          <Insets left="25.0" right="25.0" />
+                                       </padding>
+                                    </Label>
+                                    <Label alignment="CENTER" text="14000Hz" textFill="WHITE">
+                                       <padding>
+                                          <Insets left="25.0" right="25.0" />
+                                       </padding>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" layoutY="46.0" prefHeight="158.0" prefWidth="475.0">
+                                 <children>
+                                    <Slider fx:id="eqslider1" orientation="VERTICAL" style="-fx-background-color: transparent; -fx-cursor: hand;" stylesheets="@home.css" value="50.0">
+                                       <HBox.margin>
+                                          <Insets />
+                                       </HBox.margin>
+                                       <padding>
+                                          <Insets left="35.0" right="40.0" />
+                                       </padding>
+                                    </Slider>
+                                    <Slider fx:id="eqslider2" orientation="VERTICAL" style="-fx-background-color: transparent; -fx-cursor: hand;" stylesheets="@home.css" value="50.0">
+                                       <HBox.margin>
+                                          <Insets />
+                                       </HBox.margin>
+                                       <padding>
+                                          <Insets left="35.0" right="40.0" />
+                                       </padding>
+                                    </Slider>
+                                    <Slider fx:id="eqslider3" orientation="VERTICAL" style="-fx-background-color: transparent; -fx-cursor: hand;" stylesheets="@home.css" value="50.0">
+                                       <HBox.margin>
+                                          <Insets />
+                                       </HBox.margin>
+                                       <padding>
+                                          <Insets left="35.0" right="40.0" />
+                                       </padding>
+                                    </Slider>
+                                    <Slider fx:id="eqslider4" orientation="VERTICAL" style="-fx-background-color: transparent; -fx-cursor: hand;" stylesheets="@home.css" value="50.0">
+                                       <HBox.margin>
+                                          <Insets />
+                                       </HBox.margin>
+                                       <padding>
+                                          <Insets left="35.0" right="40.0" />
+                                       </padding>
+                                    </Slider>
+                                    <Slider fx:id="eqslider5" orientation="VERTICAL" style="-fx-background-color: transparent; -fx-cursor: hand;" stylesheets="@home.css" value="50.0">
+                                       <HBox.margin>
+                                          <Insets />
+                                       </HBox.margin>
+                                       <padding>
+                                          <Insets left="35.0" right="40.0" />
+                                       </padding>
+                                    </Slider>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </Pane>
+                     </children>
+                  </Pane>
+                  <Pane fx:id="notificationpane" layoutY="317.0" prefHeight="130.0" prefWidth="400.0" style="-fx-border-color: blue;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
+                     <children>
+                        <HBox alignment="CENTER" prefHeight="35.0" prefWidth="400.0" style="-fx-background-color: blue;">
+                           <children>
+                              <Label alignment="CENTER" text="Notification of Media Player" textFill="WHITE">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" layoutY="41.0" prefHeight="95.0" prefWidth="400.0">
+                           <children>
+                              <Text fx:id="notifyMsg" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Random And Curent Play is Off">
+                                 <font>
+                                    <Font size="28.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </HBox>
+                     </children>
+                  </Pane>
+                  <TabPane fx:id="homepane" prefHeight="200.0" prefWidth="200.0" style="-fx-cursor: hand;" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <tabs>
+                      <Tab text="  Mouse Help  ">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: white;" />
+                        </content>
+                      </Tab>
+                      <Tab text="  Kaybord Help  ">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: white;" />
+                        </content>
+                      </Tab>
+                        <Tab text="   Voice Command Help  ">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: white;" />
+                           </content>
+                        </Tab>
+                        <Tab text="  About Bajaao  ">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: white;">
+                                 <children>
+                                    <JFXTextArea editable="false" text="jkljlk" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </Tab>
+                    </tabs>
+                  </TabPane>
+                  <Pane fx:id="tooltipPane" layoutY="1.0" prefHeight="100.0" prefWidth="350.0" style="-fx-border-color: blue;" AnchorPane.leftAnchor="0.0">
+                     <children>
+                        <HBox alignment="CENTER" prefHeight="35.0" prefWidth="350.0" style="-fx-background-color: blue;">
+                           <children>
+                              <Label fx:id="tooltiptitle" text="Home" textFill="WHITE">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" layoutY="35.0" prefHeight="57.0" prefWidth="350.0">
+                           <children>
+                              <Text fx:id="tooltipdata" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="This is show all Help And About this aplplication" textAlignment="CENTER" wrappingWidth="333.6708984375">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </HBox>
+                     </children>
+                  </Pane>
+                  <Pane fx:id="settingpane" layoutY="70.0" prefHeight="383.0" prefWidth="280.0" style="-fx-background-color: black; -fx-border-color: blue;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="70.0">
+                     <children>
+                        <HBox alignment="CENTER" prefHeight="30.0" prefWidth="280.0" style="-fx-background-color: blue;">
+                           <children>
+                              <Label text="Setting of Bajjao" textFill="WHITE">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" layoutX="1.0" layoutY="31.0" prefHeight="30.0" prefWidth="280.0">
+                           <children>
+                              <Label text="Voive Command Active" textFill="WHITE">
+                                 <font>
+                                    <Font name="Cambria Math" size="15.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <JFXToggleButton fx:id="voicebtn" onMouseClicked="#showVoiceComand" prefHeight="30.0" prefWidth="114.0" size="9.0" text="Off" textAlignment="CENTER" textFill="#4400ff" toggleColor="#2d09f8" toggleLineColor="#6c93d7" unToggleColor="RED" unToggleLineColor="#eb6565">
+                                 <font>
+                                    <Font name="Californian FB" size="15.0" />
+                                 </font>
+                              </JFXToggleButton>
+                           </children>
+                           <opaqueInsets>
+                              <Insets right="4.0" />
+                           </opaqueInsets>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" layoutY="84.0" prefHeight="30.0" prefWidth="280.0">
+                           <children>
+                              <Label text="Random Song Play" textFill="WHITE">
+                                 <font>
+                                    <Font name="Cambria Math" size="15.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <JFXToggleButton fx:id="randombtn" onMouseClicked="#showRandomSong" prefHeight="30.0" prefWidth="114.0" size="9.0" text="Off" textAlignment="CENTER" textFill="#4400ff" toggleColor="#2d09f8" toggleLineColor="#6c93d7" unToggleColor="RED" unToggleLineColor="#eb6565">
+                                 <font>
+                                    <Font name="Californian FB" size="15.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="30.0" />
+                                 </HBox.margin>
+                              </JFXToggleButton>
+                           </children>
+                           <opaqueInsets>
+                              <Insets right="4.0" />
+                           </opaqueInsets>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" layoutY="139.0" prefHeight="30.0" prefWidth="280.0">
+                           <children>
+                              <Label text="Single Song  Play" textFill="WHITE">
+                                 <font>
+                                    <Font name="Cambria Math" size="15.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <JFXToggleButton fx:id="currentbtn" onMouseClicked="#showCurrentSong" prefHeight="30.0" prefWidth="114.0" size="9.0" text="Off" textAlignment="CENTER" textFill="#4400ff" toggleColor="#2d09f8" toggleLineColor="#6c93d7" unToggleColor="RED" unToggleLineColor="#eb6565">
+                                 <font>
+                                    <Font name="Californian FB" size="15.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="42.0" />
+                                 </HBox.margin>
+                              </JFXToggleButton>
+                           </children>
+                           <opaqueInsets>
+                              <Insets right="4.0" />
+                           </opaqueInsets>
+                        </HBox>
+                     </children>
+                  </Pane>
+                        <StackPane fx:id="playingfield" style="-fx-background-color: black;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <children>
+                                <MediaView fx:id="mediaview" fitHeight="450.0" fitWidth="750.0" />
+                        <ImageView fx:id="image" disable="true" fitHeight="238.0" fitWidth="346.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../image/images%20(1).jpg" />
+                           </image>
+                        </ImageView>
+                            </children>
+                        </StackPane>
+                    </children>
+                </AnchorPane>
+            </center>
+        </BorderPane>
+    </children>
+</AnchorPane>
